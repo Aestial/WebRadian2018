@@ -1,10 +1,3 @@
-@font-face {
-  font-family: 'Ailerons';
-  src: url('./fonts/Ailerons.ttf');
-  /* src: local('☺'), url('fonts/Montserrat-Light.woff') format('woff'), url('fonts/Montserrat-Light.ttf') format('truetype'), url('fonts/Montserrat-Light.svg') format('svg'); */
-  font-weight: 300;
-  font-style: normal;
-}
 .section-background {
   position: fixed;
   width: 0;
@@ -22,15 +15,13 @@
 .about-background {
   background-image: url("../img/about-visual.png");
 }
-.radian-title, .outer-nav, .side-nav, .header {
-  font-family: Ailerons;
+.radian-title, .side-nav, .header {
   letter-spacing: 2px;
 }
 .header-svg {
   position: absolute;
   height: 90%;
   top: 10%;
-  /* transform: translateY(-0%); */
 }
 .header-cont {
   -webkit-padding-start: 36px;

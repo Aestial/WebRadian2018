@@ -1,4 +1,11 @@
 @font-face {
+  font-family: 'Ailerons';
+  src: url('./fonts/Ailerons.ttf');
+  /* src: local('☺'), url('fonts/Montserrat-Light.woff') format('woff'), url('fonts/Montserrat-Light.ttf') format('truetype'), url('fonts/Montserrat-Light.svg') format('svg'); */
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
   font-family: 'Montserrat';
   src: url("fonts/Montserrat-Black.eot");
   src: local("☺"), url("fonts/Montserrat-Black.woff") format("woff"), url("fonts/Montserrat-Black.ttf") format("truetype"), url("fonts/Montserrat-Black.svg") format("svg");
@@ -194,7 +201,7 @@ body {
   background-color: #0c0c0c;
   font-size: 14px;
   line-height: 1.6;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Ailerons", sans-serif;
   color: #fff;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%
@@ -445,17 +452,18 @@ body {
   width: 23px
 }
 .header--cta {
-  font-size: 1.9em;
+  font-size: 1.35em;
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(0.85, 1);
-  transform: translate(-50%, -50%) scale(0.85, 1);
-  padding: 0 20px 9px 20px;
-  line-height: 30px;
+  -webkit-transform: translate(-50%, -50%));
+  transform: translate(-50%, -50%);
+  padding: 6px 10px;
+  line-height: 1.5;
   text-decoration: none;
   color: #fff;
-  font-weight: 700;
+  font-family: "Montserrat";
+  font-weight: 500;
   text-transform: uppercase;
   background-color: #f7246a;
   border: none;
@@ -614,6 +622,7 @@ body {
 .intro--banner button {
   position: relative;
   padding: 5px 17px 5px 12px;
+  font-family: "Montserrat";
   font-weight: 700;
   text-transform: uppercase;
   background-color: transparent;
@@ -663,6 +672,7 @@ body {
 .intro--options>a {
   max-width: 250px;
   text-decoration: none;
+  font-family: "Montserrat";
   color: rgba(250, 250, 250, 0.9);
   -webkit-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out
@@ -771,7 +781,6 @@ body {
   font-size: 3.1em;
   letter-spacing: 0.17em;
   font-weight: 180;
-  font-family: Ailerons;
   text-align: center
 }
 .work--lockup {
@@ -799,15 +808,15 @@ body {
 }
 .work--lockup .slider--item-title {
   margin-top: 10px;
-  font-family: Ailerons;
   font-weight: 200;
-  font-size: 2em;
+  font-size: 1.8em;
   text-transform: uppercase
 }
 .work--lockup .slider--item-description {
   display: none;
   max-width: 250px;
-  margin: 0 auto
+  margin: 0 auto;
+  font-family: "Montserrat";
 }
 .work--lockup .slider--item-image {
   width: 150px;
@@ -846,7 +855,7 @@ body {
 }
 .work--lockup .slider--item-center .slider--item-title {
   margin-top: 25px;
-  font-size: 2.8em;
+  font-size: 2.3em;
 }
 .work--lockup .slider--item-center .slider--item-description {
   display: block
@@ -977,7 +986,6 @@ body {
   background-color: #f7246a
 }
 .about--banner h2 {
-  font-family: Ailerons;
   position: relative;
   margin-top: 30px;
   font-size: 2.8em;
@@ -1009,6 +1017,8 @@ body {
   padding: 5px 17px 5px 0;
   text-decoration: none;
   color: #fff;
+  font-family: "Montserrat";
+  font-size: 1.2em;
   font-weight: 700;
   text-transform: uppercase;
   background-color: transparent
@@ -1193,8 +1203,9 @@ body {
   display: block;
   margin: 14px 0;
   text-decoration: none;
+  font-size: 1.8em;
   color: #fff;
-  font-weight: 700
+  font-weight: 200;
 }
 .contact--lockup .modal--information p {
   margin-top: 0
@@ -1209,23 +1220,26 @@ body {
   margin: 0 auto 25px auto
 }
 .contact--lockup .modal--options li:nth-child(1) {
-  background-color: #1769ff
+  background-color: #f7246a;
 }
 .contact--lockup .modal--options li:nth-child(2) {
-  background-color: #ea4c89
+  background-color: #f7246a;
 }
 .contact--lockup .modal--options li:nth-child(3) {
   margin-bottom: 0;
-  background-color: #f7246a;
-  text-transform: uppercase
+  background-color: #ffffff;
+  text-transform: uppercase;
 }
 .contact--lockup .modal--options a {
   display: block;
   width: 100%;
-  padding: 8px 0;
   text-decoration: none;
   color: #fff;
-  font-weight: 700
+  font-size: 1.9em;
+  font-weight: 300;
+}
+.contact--lockup .modal--options .contact--button a {
+  color: #000;
 }
 .hire {
   position: relative;
@@ -1277,9 +1291,9 @@ body {
 .work-request input[type="submit"] {
   width: 400px;
   max-width: 100%;
-  line-height: 50px;
-  font-size: 16px;
-  font-weight: 700;
+  line-height: 1.8;
+  font-size: 2.5em;
+  font-weight: 200;
   text-transform: uppercase;
   background-color: #f7246a;
   border: none;
@@ -1334,7 +1348,7 @@ body {
   width: 200px;
   margin-bottom: 30px;
   line-height: 50px;
-  font-size: 16px;
+  font-size: 1.9em;
   font-weight: 700;
   text-align: center;
   border: 2px solid #fff;
@@ -1370,13 +1384,14 @@ body {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  margin-bottom: 60px
+  margin-bottom: 60px;
+  font-family: "Montserrat";
 }
 .work-request--information .information-name, .work-request--information .information-email {
   position: relative;
   width: 45%;
   height: 50px;
-  font-size: 30px;
+  font-size: 2em;
   font-weight: 300
 }
 .work-request--information input[type="text"], .work-request--information input[type="email"] {
@@ -1495,7 +1510,7 @@ body {
 .outer-nav {
   position: absolute;
   top: 50%;
-  left: 55%;
+  left: 60%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   -webkit-transform-style: preserve-3d;
@@ -1503,10 +1518,10 @@ body {
   margin: 0;
   padding: 0;
   list-style: none;
-  text-align: center;
+  text-align: right;
   visibility: hidden;
   -webkit-transition: visibility 0s .2s;
-  transition: visibility 0s .2s
+  transition: visibility 0s .2s;
 }
 .outer-nav.is-vis {
   visibility: visible
@@ -1529,8 +1544,10 @@ body {
   transform-style: preserve-3d;
   -webkit-transform: translateX(350px) translateZ(-1000px);
   transform: translateX(350px) translateZ(-1000px);
-  font-size: 55px;
-  font-weight: 900;
+  font-size: 3.6em;
+  letter-spacing: 0.25em;
+  font-weight: 100;
+  line-height: 2;
   opacity: 0;
   cursor: pointer;
   -webkit-transition: opacity .2s, -webkit-transform .2s;
@@ -1552,12 +1569,12 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -25%);
-  transform: translate(-50%, -25%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
   width: 110%;
-  height: 15px;
+  height: 10px;
   opacity: 0;
-  background-color: #f7246a
+  background-color: #f7246a;
 }
 .outer-nav>li.is-active::before {
   opacity: 1
