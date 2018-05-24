@@ -26,23 +26,16 @@
 .header-svg {
   position: absolute;
   height: 90%;
+  top: 10%;
+  /* transform: translateY(-0%); */
 }
 .header-cont {
-  -webkit-padding-start: 30px;
+  -webkit-padding-start: 36px;
 }
 .header-latin {
   letter-spacing: 0.3em;
-  transform: scale(1, 1.14);
+  transform: scale(1, 1.16);
 }
 .header-kata {
   letter-spacing: 1px;
-}
-.radian-title {
-  letter-spacing: 0.5em;
-  transform: scale(1, 1.14);
-  line-height: 1.5 !important;
-  font-weight: 100;
-}
-.intro--banner::before {
-  background-color: rgba(255, 255, 255, 0.07);
 }
