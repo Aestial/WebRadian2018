@@ -11,8 +11,13 @@
   height: 0;
   left: 0;
   padding: 50vh 50vw;
-  background: url("../img/introduction-visual.png") no-repeat;
   background-size: cover;
+}
+.intro-background {
+  background: url("../img/introduction-visual.png") no-repeat;
+}
+.about-background {
+  background: url("../img/about-visual.png") no-repeat;
 }
 .radian-title, .outer-nav, .side-nav, .header {
   font-family: Ailerons;
