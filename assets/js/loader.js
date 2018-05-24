@@ -15,8 +15,6 @@ var loader = (function(){
     if (verbose) console.log('LOADER: Loading complete');
     logo.animateOnce('tada');
     bar.animateOnce('fadeOut');
-    // TODO: REMOVE THIS DEPENDENCY:
-    $.fn.fullpage.silentMoveTo('aboutus');
     has_loaded = true;
   };
   var on_progress = function (item, loaded, total) {
@@ -30,9 +28,7 @@ var loader = (function(){
     {
       dom.animateOnce('fadeOut');
       // ++ TODO: REMOVE THIS DEPENDENCIES!!!:
-      two.anim();
       three.trigger_anim(1,0.5);
-      $.fn.fullpage.setAllowScrolling(true);
       // ++
       has_entered = true;
     }

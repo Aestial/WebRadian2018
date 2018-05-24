@@ -9,12 +9,25 @@
   <meta name="description" content="Development Studio">
   <meta name="keywords" content="radian, global-template">
   <meta name="author" content="Jaime Hernandez">
+  <link rel="stylesheet" type="text/css" href="assets/css/libraries/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/libraries/loading-bar.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/popup.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/vimeo.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/patch.css">
 </head>
 
 <body>
-
+  <div id="loadScreen" style="width:100%; height:100%;">
+    <div id="logoCont">
+      <img id="logo" src="assets/img/logo.svg"></img>
+    </div>
+    <div id="loadBarCont">
+      <div id="loadBar" class="ldBar label-center" data-stroke="white" data-stroke-width="4" data-stroke-trail="gray" data-stroke-trail-width="2" data-value="0">
+      </div>
+    </div>
+  </div>
   <!-- notification for small viewports and landscape oriented smartphones -->
   <div class="device-notification">
     <a class="device-notification--logo" href="#0">
@@ -23,7 +36,9 @@
   </a>
     <p class="device-notification--message">RADIAN tiene mucho que ofrecer. Orienta tu dispositivo verticalmente o busca una pantalla más grande. ¡No te decepcionarás!</p>
   </div>
-
+  <div id="popup">
+    <div id='vimeo' data-vimeo-id="211593215" data-vimeo-width="384" data-vimeo-color="ff6665" data-vimeo-portrait="false" data-vimeo-byline="false"></div>
+  </div>
   <div class="perspective effect-rotate-left">
     <div class="container">
       <div class="outer-nav--return"></div>
@@ -280,16 +295,20 @@
       <li>Colabora</li>
     </ul>
   </div>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script>
     window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')
   </script>
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <script src="assets/js/functions-min.js"></script>
+  <script src="assets/js/utils/jQueryExtents.js"></script>
+  <script src="assets/js/vendor/loading-bar.js"></script>
   <script src="assets/js/vendor//three.min.js"></script>
   <script src="assets/js/vendor/three-extras/Detector.js"></script>
   <script src="assets/js/vendor/three-extras/ShaderLoader.js"></script>
   <script src="assets/js/loader.js"></script>
+  <script src="assets/js/popup.js"></script>
+  <script src="assets/js/vimeo.js"></script>
   <script src="assets/js/three.js"></script>
   <script src="assets/js/main.js"></script>
 
