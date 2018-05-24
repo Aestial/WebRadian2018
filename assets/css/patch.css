@@ -1,0 +1,22 @@
+@font-face {
+  font-family: 'Ailerons';
+  src: url('./fonts/Ailerons.ttf');
+  /* src: local('☺'), url('fonts/Montserrat-Light.woff') format('woff'), url('fonts/Montserrat-Light.ttf') format('truetype'), url('fonts/Montserrat-Light.svg') format('svg'); */
+  font-weight: 300;
+  font-style: normal;
+}
+.section-background {
+  position: fixed;
+  width: 0;
+  height: 0;
+  left: 0;
+  padding: 50vh 50vw;
+  background: url("../img/introduction-visual.png") no-repeat;
+  background-size: cover;
+}
+.radian-title {
+  font-family: Ailerons;
+}
+.header {
+  font-family: Ailerons;
+}
