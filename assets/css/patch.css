@@ -10,6 +10,7 @@
   width: 0;
   height: 0;
   left: 0;
+  z-index: -10;
   padding: 50vh 50vw;
   background-size: cover;
   background-repeat: no-repeat;
