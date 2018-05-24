@@ -768,7 +768,10 @@ body {
 }
 .work h2 {
   margin: 0 0 20px 0;
-  font-size: 30px;
+  font-size: 3.1em;
+  letter-spacing: 0.17em;
+  font-weight: 180;
+  font-family: Ailerons;
   text-align: center
 }
 .work--lockup {
@@ -796,8 +799,9 @@ body {
 }
 .work--lockup .slider--item-title {
   margin-top: 10px;
-  font-size: 12px;
-  font-weight: 700;
+  font-family: Ailerons;
+  font-weight: 200;
+  font-size: 2em;
   text-transform: uppercase
 }
 .work--lockup .slider--item-description {
@@ -842,7 +846,7 @@ body {
 }
 .work--lockup .slider--item-center .slider--item-title {
   margin-top: 25px;
-  font-size: 16px
+  font-size: 2.8em;
 }
 .work--lockup .slider--item-center .slider--item-description {
   display: block
@@ -946,7 +950,9 @@ body {
 }
 .about--banner {
   position: relative;
-  height: 475px
+  margin-left: 50px;
+  margin-bottom: 80px;
+  /* height: 475px; */
 }
 .about--banner::before {
   content: "";
@@ -972,10 +978,12 @@ body {
 }
 .about--banner h2 {
   position: relative;
-  margin-top: 35px;
-  font-size: 68px;
-  font-weight: 900;
-  line-height: 1;
+  margin-top: 5px;
+  font-family: Ailerons;
+  font-size: 2.9em;
+  font-weight: 200;
+  letter-spacing: 0.3em;
+  line-height: 1.85;
   z-index: 1
 }
 .about--banner h2::before {

@@ -12,12 +12,14 @@
   left: 0;
   padding: 50vh 50vw;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 .intro-background {
-  background: url("../img/introduction-visual.png") no-repeat;
+  background-image: url("../img/introduction-visual.png");
 }
 .about-background {
-  background: url("../img/about-visual.png") no-repeat;
+  background-image: url("../img/about-visual.png");
 }
 .radian-title, .outer-nav, .side-nav, .header {
   font-family: Ailerons;
