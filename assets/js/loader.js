@@ -31,6 +31,7 @@ var loader = (function(){
       // ++ TODO: REMOVE THIS DEPENDENCIES!!!:
       three.trigger_anim(1,0.5);
       // ++
+      $("body").removeClass("modal-open");
       has_entered = true;
     }
   };
@@ -41,12 +42,13 @@ var loader = (function(){
     bar = $('#loadBar');
     dom = $('#loadScreen');
     control = document.getElementById('loadBar').ldBar;
-    logo.hover(on_enter);
+    // logo.hover(on_enter);
     manager = new THREE.LoadingManager();
     manager.onStart = on_start;
     manager.onLoad = on_load;
     manager.onProgress = on_progress;
     manager.onError = on_error;
+    $("body").addClass("modal-open");
   };
   var get_manager = function () {
     return manager;

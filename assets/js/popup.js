@@ -19,6 +19,13 @@ var popup = (function(){
   var _update = function (state) {
     _play_anim(state);
     _set_text(state);
+    // if (state == STATES.Show) {
+    //   $("body").addClass("modal-open");
+    // }
+    // else if (state == STATES.Hide) {
+    //   $("body").removeClass("modal-open");
+    // }
+
   };
   // Public methods
   var init = function () {
