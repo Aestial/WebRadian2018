@@ -1,5 +1,5 @@
 var popup = (function(){
-  var verbose = false; // CONSOLE
+  var verbose = true; // CONSOLE
   var STATES = Object.freeze({Start:-1, Show:0, Hide:1});
   var ANIM_CMD = ['fadeInRight','fadeOutRight'];
   var BTN_TEXT = ['Cerrar','Ver más'];

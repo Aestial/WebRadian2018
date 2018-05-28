@@ -9,6 +9,7 @@
   <meta name="description" content="Development Studio">
   <meta name="keywords" content="radian, global-template">
   <meta name="author" content="Jaime Hernandez">
+  <link rel='shortcut icon' type='image/x-icon' href='assets/icons/white/favicon.ico' />
   <link rel="stylesheet" type="text/css" href="assets/css/libraries/animate.min.css">
   <link rel="stylesheet" type="text/css" href="assets/css/libraries/loading-bar.css">
   <link rel="stylesheet" type="text/css" href="assets/css/loader.css">
@@ -37,6 +38,9 @@
     <p class="device-notification--message">RADIAN tiene mucho que ofrecer. Orienta tu dispositivo verticalmente o busca una pantalla más grande. ¡No te decepcionarás!</p>
   </div>
   <div id="popup">
+    <div id="popup-close" onclick="popup.toggle()">
+      <!-- <img src="assets/img/close.png" alt="close"> -->
+    </div>
     <div id='vimeo' data-vimeo-id="211593215" data-vimeo-width="384" data-vimeo-color="ff6665" data-vimeo-portrait="false" data-vimeo-byline="false"></div>
   </div>
   <div class="perspective effect-rotate-left">
@@ -156,7 +160,7 @@
                 <div class="about--banner">
                   <!-- : -VR / AR -Videojuegos -Motion Graphics -Diseño de UI -Motion Graphics -Diseño electrónico -Diseño de iluminación</p> -->
                   <h2>VR / AR <br> Videojuegos <br> Diseño de UI <br> Motion Graphics <br> Diseño electrónico <br> Diseño de iluminación</h2>
-                  <a href="#0">DEMO REEL
+                  <a onclick="popup.toggle()">DEMO REEL
                   <span>
                     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118" style="enable-background:new 0 0 150 118;" xml:space="preserve">
                     <g transform="translate(0.000000,118.000000) scale(0.100000,-0.100000)">

@@ -3,6 +3,7 @@ var debug = false;
 // Methods
 var init = function () {
   loader.init();
+  popup.init();
   vimeo.init();
   three.init();
 };
