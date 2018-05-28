@@ -46,6 +46,8 @@ var popup = (function(){
       newState = (state + 1) % 2;
       set(newState);
       return !newState;
+      // correct mobile device window position
+      window.scrollTo(0, 0);
     }
   };
   var play = function () {

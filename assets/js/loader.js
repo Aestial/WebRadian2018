@@ -10,6 +10,8 @@ var loader = (function(){
   // Manager Handlers
   var on_start = function (item, loaded, total) {
     if (verbose) console.log('LOADER: Loading started');
+    // correct mobile device window position
+    window.scrollTo(0, 0);
   };
   var on_load = function () {
     if (verbose) console.log('LOADER: Loading complete');
@@ -20,6 +22,8 @@ var loader = (function(){
   };
   var on_progress = function (item, loaded, total) {
     control.set((loaded*100.0)/total*1.0);
+    // correct mobile device window position
+    window.scrollTo(0, 0);
   };
   var on_error = function (url) {
     if (verbose) console.log('LOADER: Error loading');
@@ -32,6 +36,8 @@ var loader = (function(){
       three.trigger_anim(1,0.5);
       // ++
       $("body").removeClass("modal-open");
+      // correct mobile device window position
+      window.scrollTo(0, 0);
       has_entered = true;
     }
   };
