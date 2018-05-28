@@ -1,6 +1,7 @@
 #popup {
   overflow: hidden;
-  position: absolute;
+  position: fixed;
+  margin: 0;
   right: 0%;
   height: 100%;
   width: 100%;

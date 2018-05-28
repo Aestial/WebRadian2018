@@ -3,16 +3,17 @@
   /* display: none;
 	/* ------------ */
   overflow: hidden;
-  position: absolute;
-  background-color: #000;
+  position: fixed;
+  margin: 0;
   left: 0%;
   top: 0%;
   height: 100%;
   width: 100%;
   z-index: 99;
+  background-color: #000;
   background-repeat: no-repeat;
   background-size: cover;
-  animation-duration: 4s;
+  animation-duration: 3s;
 }
 #logo {
   /*-webkit-filter: grayscale(100%) brightness(60%);
@@ -26,8 +27,11 @@
 }
 #logoCont {
   position: absolute;
-  width: 10%;
-  top: 45%;
+  width: 50px;
+  height: 50px;
+  /* width: 10%; */
+  padding: 5px;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
