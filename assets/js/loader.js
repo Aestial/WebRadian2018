@@ -15,7 +15,6 @@ var loader = (function(){
   };
   var on_load = function () {
     if (verbose) console.log('LOADER: Loading complete');
-    // logo.animateOnce('tada');
     bar.animateOnce('fadeOut');
     has_loaded = true;
     on_enter();
@@ -33,11 +32,11 @@ var loader = (function(){
     {
       dom.animateOnce('fadeOut');
       // ++ TODO: REMOVE THIS DEPENDENCIES!!!:
-      three.trigger_anim(1,0.5);
-      // ++
       $("body").removeClass("modal-open");
       // correct mobile device window position
       window.scrollTo(0, 0);
+      three.trigger_anim(1,0.5);
+      // +++
       has_entered = true;
     }
   };
@@ -48,7 +47,6 @@ var loader = (function(){
     bar = $('#loadBar');
     dom = $('#loadScreen');
     control = document.getElementById('loadBar').ldBar;
-    // logo.hover(on_enter);
     manager = new THREE.LoadingManager();
     manager.onStart = on_start;
     manager.onLoad = on_load;

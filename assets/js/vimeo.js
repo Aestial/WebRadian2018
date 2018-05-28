@@ -37,6 +37,7 @@ var vimeo = (function(){
     });
   };
   var pause = function () {
+    console.log("Pausing video");
     player.pause();
   };
   var set = function (newId) {

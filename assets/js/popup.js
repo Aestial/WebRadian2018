@@ -7,6 +7,7 @@ var popup = (function(){
   var button;
   var state;
   var playing;
+  var shown = false;
   // Private methods
   var _play_anim = function (state) {
     var command = ANIM_CMD[state];
@@ -21,9 +22,11 @@ var popup = (function(){
     _set_text(state);
     if (state == STATES.Show) {
       $("body").addClass("modal-open");
+      shown = true;
     }
     else if (state == STATES.Hide) {
       $("body").removeClass("modal-open");
+      if (shown) vimeo.pause();
     }
     window.scrollTo(0, 0);
   };
