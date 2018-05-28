@@ -13,9 +13,10 @@ var loader = (function(){
   };
   var on_load = function () {
     if (verbose) console.log('LOADER: Loading complete');
-    logo.animateOnce('tada');
+    // logo.animateOnce('tada');
     bar.animateOnce('fadeOut');
     has_loaded = true;
+    on_enter();
   };
   var on_progress = function (item, loaded, total) {
     control.set((loaded*100.0)/total*1.0);

@@ -13,13 +13,13 @@
   background-color: #000;
   background-repeat: no-repeat;
   background-size: cover;
-  animation-duration: 3s;
+  animation-duration: 2s;
 }
 #logo {
   /*-webkit-filter: grayscale(100%) brightness(60%);
 	filter: grayscale(100%) brightness(60%);*/
   animation-duration: 1s;
-  animation-delay: 3s;
+  animation-delay: 2s;
 }
 #logo:hover {
   -webkit-filter: grayscale(0%) brightness(200%);
@@ -49,7 +49,7 @@
 }
 #loadBar {
   animation-duration: 1s;
-  animation-delay: 0.5s;
+  /* animation-delay: 0.1s; */
 }
 .ldBar-label {
   visibility: hidden;
