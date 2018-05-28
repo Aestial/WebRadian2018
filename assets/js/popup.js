@@ -25,7 +25,7 @@ var popup = (function(){
     else if (state == STATES.Hide) {
       $("body").removeClass("modal-open");
     }
-
+    window.scrollTo(0, 0);
   };
   // Public methods
   var init = function () {
@@ -47,7 +47,6 @@ var popup = (function(){
       set(newState);
       return !newState;
       // correct mobile device window position
-      window.scrollTo(0, 0);
     }
   };
   var play = function () {
