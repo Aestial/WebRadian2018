@@ -35,7 +35,7 @@ var loader = (function(){
       $("body").removeClass("modal-open");
       // correct mobile device window position
       window.scrollTo(0, 0);
-      three.trigger_anim(1,0.5);
+      // three.trigger_anim(1,0.5);
       // +++
       has_entered = true;
     }

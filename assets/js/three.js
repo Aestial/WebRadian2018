@@ -1,5 +1,5 @@
 var three = (function(){
-  var verbose = false; // CONSOLE
+  var verbose = true; // CONSOLE
   // Enums
   var Clips = Object.freeze({Test:0});
   // Utils
@@ -20,15 +20,7 @@ var three = (function(){
   var mixer;
   var actions = [];
   var currentAction;
-  // Arcade
-  var arcade;
-  var arcadeSprite;
-  var arcadeMaterial;
-  var videoSprite;
-  var videoMaterial;
-  // Video
-  var video;
-  var vText;
+
   // Mouse Input
   var mouseX = 0;
   var mouseY = 0;
@@ -71,34 +63,6 @@ var three = (function(){
     scene = new THREE.Scene();
     glowScene = new THREE.Scene();
 
-    // Video texture
-    // video = document.getElementById( 'video' );
-    // vText = new THREE.VideoTexture( video );
-    // vText.minFilter = THREE.LinearFilter;
-    // vText.magFilter = THREE.LinearFilter;
-    // vText.format = THREE.RGBFormat;
-
-    // Arcade texture
-    var arcadeMap = new THREE.TextureLoader(loader.get_manager()).load( 'assets/textures/arcade.png' );
-    // Arcade materials
-    arcadeMaterial = new THREE.SpriteMaterial({ map: arcadeMap, color: 0xffffff });
-    // videoMaterial = new THREE.SpriteMaterial({ map: vText });
-    // Arcade objects
-    arcade = new THREE.Object3D();
-    arcadeSprite = new THREE.Sprite( arcadeMaterial );
-    // videoSprite = new THREE.Sprite( videoMaterial );
-
-    // videoSprite.scale.set(0.285, 0.16, 1);
-    // videoSprite.position.set(0.015, 0.16, -0.01);
-    arcadeSprite.scale.set(0.343, 0.859, 1);
-    arcadeSprite.position.set(0, 0, 0);
-
-    arcade.add(arcadeSprite);
-    // arcade.add(videoSprite);
-    arcade.scale.set(25, 25, 1);
-    arcade.position.set(0, 0, -20);
-    // scene.add(arcade);
-
     parent = new THREE.Object3D();
     glowParent = new THREE.Object3D();
     glowSocket = new THREE.Object3D();
@@ -127,7 +91,7 @@ var three = (function(){
     var reflectionCube = new THREE.CubeTextureLoader(loader.get_manager()).load( urls );
     reflectionCube.format = THREE.RGBFormat;
 
-    baseTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH*1.25, SCREEN_HEIGHT*1.25, {
+    baseTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH * 1.2, SCREEN_HEIGHT * 1.2, {
       minFilter: THREE.LinearFilter,
       magFilter: THREE.LinearFilter,
       format: THREE.RGBFormat
@@ -138,7 +102,7 @@ var three = (function(){
       format: THREE.RGBFormat
     } );
     //blurTexture = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, {
-    blurTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH/2, SCREEN_HEIGHT/2, {
+    blurTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH, SCREEN_HEIGHT, {
       minFilter: THREE.LinearFilter,
       magFilter: THREE.LinearFilter,
       format: THREE.RGBFormat
@@ -151,7 +115,7 @@ var three = (function(){
         vertexShader: data.emissive.vertex,
         fragmentShader: data.emissive.fragment
       } );
-      glowMesh = new THREE.Mesh( new THREE.IcosahedronGeometry( 0.7, 5 ), emissiveMat );
+      glowMesh = new THREE.Mesh( new THREE.IcosahedronGeometry( 0.75, 5 ), emissiveMat );
       glowScene.add(glowMesh);
       zoomBlurShader = new THREE.ShaderMaterial( {
         uniforms: {
@@ -193,6 +157,7 @@ var three = (function(){
       transparent: true,
       opacity: 0.94
     } );
+    blackMat.name = "BlackGlass";
     objMaterials.push(blackMat);
     whiteMat = new THREE.MeshStandardMaterial( {
       color: 0xffffff,
@@ -202,6 +167,7 @@ var three = (function(){
       envMap: reflectionCube,
       envMapIntensity: 0.16
     } );
+    whiteMat.name = "WhiteMetal";
     redMat = new THREE.MeshStandardMaterial( {
       color: 0xff0024,
       roughness: 0.1,
@@ -210,6 +176,7 @@ var three = (function(){
       opacity: 0.8,
       emissive: 0.5
     } );
+    redMat.name = "RedEmissive";
     obj2Mats.push(whiteMat);
     obj2Mats.push(redMat);
 
@@ -227,56 +194,59 @@ var three = (function(){
     obj_loader.load( "assets/meshes/bot.json", OnBotLoaded);
     function OnBotLoaded (obj)
     {
-      oclObject = obj.clone( true );
-      //console.log(obj);
-      //console.log(oclObject);
-      for (var i=0; i<obj.children.length; i++){
+      object = obj.children[0];
+      object.rotation.set(0,0,-Math.PI/2);
+      object.rotation.set(0,-Math.PI/2,0);
+
+      oclObject = object.clone( true );
+
+      for (var i=0; i < object.children.length; i++){
         //console.log(obj.children[i].name);
-        oclObject.children[i].position = obj.children[i].position;
-        oclObject.children[i].quaternion = obj.children[i].quaternion;
+        oclObject.children[i].position = object.children[i].position;
+        oclObject.children[i].quaternion = object.children[i].quaternion;
         oclObject.children[i].material = oclMaterial;
-        switch (obj.children[i].name){
+        switch (object.children[i].name){
           case "WhiteSphere":
           if (verbose) console.log("Socket added!");
           //obj.children[i].add(glowMesh_DEBUG);
-          obj.children[i].add(glowSocket);
+          object.children[i].add(glowSocket);
           oclObject.children[i].material = [oclMaterial, emissiveMat];
           break;
           default:
           break;
         }
         if (objMaterials[i] != null){
-          obj.children[i].material = objMaterials[i];
+          object.children[i].material = objMaterials[i];
         }
       }
-      object = obj;
       parent.add(object);
       //parent.position.set(4.5,0,0);
-      object.rotation.set(-Math.PI,0,0);
-      object.rotation.set(0,-Math.PI/2,0);
       // object.rotation.set(0,0,-Math.PI/2);
       scene.add(parent);
 
       glowParent.add(oclObject);
       //glowParent.position.set(4.5,0,0);
-      oclObject.rotation.set(-Math.PI,0,0);
+      oclObject.rotation.set(0,0,-Math.PI/2);
       oclObject.rotation.set(0,-Math.PI/2,0);
       // oclObject.rotation.set(0,0,-Math.PI/2);
       glowScene.add(glowParent);
 
-      mixer = new THREE.AnimationMixer( object );
-      var numAnim = object.animations.length;
-      if (verbose) console.log("Total animations: " + numAnim);
-      for(i = 0; i < numAnim; i++) {
-        var newAction = mixer.clipAction(object.animations[i]);
-        newAction.setLoop(THREE.LoopOnce);
-        //newAction.timeScale = 1;
-        newAction.weight = 0;
-        newAction.clampWhenFinished = true;
-        newAction.play();
-        //newAction.pause();
-        actions.push(newAction);
-      }
+      console.log(object);
+      console.log(oclObject);
+
+      // mixer = new THREE.AnimationMixer( object );
+      // // var numAnim = object.animations.length;
+      // if (verbose) console.log("Total animations: " + numAnim);
+      // for(i = 0; i < numAnim; i++) {
+      //   var newAction = mixer.clipAction(object.animations[i]);
+      //   newAction.setLoop(THREE.LoopOnce);
+      //   //newAction.timeScale = 1;
+      //   newAction.weight = 0;
+      //   newAction.clampWhenFinished = true;
+      //   newAction.play();
+      //   //newAction.pause();
+      //   actions.push(newAction);
+      // }
       // TEMP: First time animation trigger (ABOUT Section)
       //triggerAnim(1);
     }
