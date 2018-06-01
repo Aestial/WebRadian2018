@@ -1,6 +1,6 @@
 var three = (function(){
   var verbose = true; // CONSOLE
-  var debug = false;
+  var guiControls = false;
   // Enums
   var Clips = Object.freeze({Test:0});
   // Utils
@@ -54,8 +54,9 @@ var three = (function(){
     container = document.getElementById("threecontainer");
 
     // SCENE AND CAMERA
-    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-    camera.position.z = 12;
+    camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 500 );
+    camera.position.y = -0.4;
+    camera.position.z = 5;
     scene = new THREE.Scene();
     glowScene = new THREE.Scene();
 
@@ -64,20 +65,17 @@ var three = (function(){
     glowSocket = new THREE.Object3D();
     worldPos = new THREE.Vector3();
     // LIGHTS
-    scene.add( new THREE.HemisphereLight( 0x443333, 0x111122 ) );
+    scene.add( new THREE.HemisphereLight( 0x30303a, 0x240515 ) );
     var lights = [];
-    lights[ 0 ] = new THREE.PointLight( 0xbababa, 1, 0 );
-    //lights[ 1 ] = new THREE.PointLight( 0xbababa, 1, 0 );
-    //lights[ 2 ] = new THREE.PointLight( 0xbababa, 1, 0 );
-    lights[ 0 ].position.set( 0, 200, 0 );
-    //lights[ 1 ].position.set( 100, 200, 100 );
-    //lights[ 2 ].position.set( - 100, - 200, - 100 );
+    lights[ 0 ] = new THREE.PointLight( 0xbabac4, 0.2, 0 );
+    lights[ 1 ] = new THREE.PointLight( 0xbabac4, 0.2, 0 );
+    lights[ 0 ].position.set( 100, 200, 100 );
+    lights[ 1 ].position.set( - 100, - 200, - 100 );
     scene.add( lights[ 0 ] );
-    //scene.add( lights[ 1 ] );
-    //scene.add( lights[ 2 ] );
+    scene.add( lights[ 1 ] );
     // REFLECTION
-    var path = "assets/textures/cube/4/";
-    var format = '.png';
+    var path = "assets/textures/cube/swedish/";
+    var format = '.jpg';
     var urls = [
       path + 'px' + format, path + 'nx' + format,
       path + 'py' + format, path + 'ny' + format,
@@ -87,17 +85,16 @@ var three = (function(){
     var reflectionCube = new THREE.CubeTextureLoader(loader.get_manager()).load( urls );
     reflectionCube.format = THREE.RGBFormat;
 
-    baseTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH * 1.2, SCREEN_HEIGHT * 1.2, {
+    baseTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH * 1.5, SCREEN_HEIGHT * 1.5, {
       minFilter: THREE.LinearFilter,
       magFilter: THREE.LinearFilter,
       format: THREE.RGBFormat
     } );
-    glowTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH/2, SCREEN_HEIGHT/2, {
+    glowTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH, SCREEN_HEIGHT, {
       minFilter: THREE.LinearFilter,
       magFilter: THREE.LinearFilter,
       format: THREE.RGBFormat
     } );
-    //blurTexture = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, {
     blurTexture = new THREE.WebGLRenderTarget( SCREEN_WIDTH, SCREEN_HEIGHT, {
       minFilter: THREE.LinearFilter,
       magFilter: THREE.LinearFilter,
@@ -117,7 +114,7 @@ var three = (function(){
         uniforms: {
           tDiffuse: { type: "t", value: 0, texture: blurTexture },
           resolution: { type: "v2", value: new THREE.Vector2( window.innerWidth, window.innerHeight ) },
-          strength: { type: "f", value: 1 },
+          strength: { type: "f", value: 0.35 },
           center: { type: "v2", value: zoomCenter }
         },
         vertexShader: data.ortho.vertex,
@@ -128,7 +125,7 @@ var three = (function(){
         uniforms: {
           tBase: { type: "t", value: 0, texture: baseTexture },
           tGlow: { type: "t", value: 1, texture: blurTexture },
-          glowStrength: { type: "f", value: 0.95 }
+          glowStrength: { type: "f", value: 0.43 }
         },
         vertexShader: data.ortho.vertex,
         fragmentShader: data.composite.fragment,
@@ -138,30 +135,30 @@ var three = (function(){
       orthoCamera = new THREE.OrthographicCamera( 1 / - 2, 1 / 2, 1 / 2, 1 / - 2, 0.00001, 1000.0 );
       orthoQuad = new THREE.Mesh( new THREE.PlaneGeometry( 1, 1 ), zoomBlurShader );
       orthoScene.add( orthoQuad );
-      if (debug) initGUI();
+      if (guiControls) initGUI();
     }
     SHADER_LOADER.load(OnShadersLoaded);
 
     var obj2Mats = [];
 
     blackMat = new THREE.MeshStandardMaterial( {
-      color: 0x000000,
-      roughness: 0.1,
-      metalness: 1,
+      color: 0x303030,
+      roughness: 0.2,
+      metalness: 0.9,
       envMap: reflectionCube,
-      envMapIntensity: 0.4,
+      envMapIntensity: 0.5,
       transparent: true,
-      opacity: 0.94
+      opacity: 0.86
     } );
     blackMat.name = "BlackGlass";
     objMaterials.push(blackMat);
     whiteMat = new THREE.MeshStandardMaterial( {
       color: 0xffffff,
       //map: vText,
-      roughness: 0.5,
-      metalness: 0.5,
+      roughness: 0.22,
+      metalness: 0.77,
       envMap: reflectionCube,
-      envMapIntensity: 0.16
+      envMapIntensity: 0.38
     } );
     whiteMat.name = "WhiteMetal";
     redMat = new THREE.MeshStandardMaterial( {
@@ -179,7 +176,7 @@ var three = (function(){
     var oclMaterial = new THREE.MeshBasicMaterial( {
       color: 0x000000
     });
-    glowSocket.position.set(0,-1.7,0);
+    glowSocket.position.set(0,0.1,0);
     /*
     var glowMesh_DEBUG = new THREE.Mesh( new THREE.IcosahedronGeometry( 0.7, 5 ), material );
     glowMesh_DEBUG.position.set(0,-1.65,0);
