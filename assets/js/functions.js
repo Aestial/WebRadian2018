@@ -60,6 +60,7 @@ $(document).ready(function() {
 
   $('.intro--options').click(function() {
     gotoPage(2);
+    popup.toggle();
   });
 
   function gotoPage(pageNumber) {

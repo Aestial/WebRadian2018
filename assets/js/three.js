@@ -1,11 +1,11 @@
 var three = (function(){
   var verbose = true; // CONSOLE
+  var debug = false;
   // Enums
   var Clips = Object.freeze({Test:0});
   // Utils
   if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-  var clock = new THREE.Clock();
-  var renderer, container, stats, obj_loader;
+  var renderer, container, obj_loader;
   // Scene objects
   var camera, scene, parent, glowSocket;
   var object, oclObject;
@@ -16,10 +16,6 @@ var three = (function(){
   var objMaterials = [];
   var zoomBlurShader, zoomCenter; // Glow emissive
   var opacity; // Black transparent
-  // Animation
-  var mixer;
-  var actions = [];
-  var currentAction;
 
   // Mouse Input
   var mouseX = 0;
@@ -234,21 +230,6 @@ var three = (function(){
       console.log(object);
       console.log(oclObject);
 
-      // mixer = new THREE.AnimationMixer( object );
-      // // var numAnim = object.animations.length;
-      // if (verbose) console.log("Total animations: " + numAnim);
-      // for(i = 0; i < numAnim; i++) {
-      //   var newAction = mixer.clipAction(object.animations[i]);
-      //   newAction.setLoop(THREE.LoopOnce);
-      //   //newAction.timeScale = 1;
-      //   newAction.weight = 0;
-      //   newAction.clampWhenFinished = true;
-      //   newAction.play();
-      //   //newAction.pause();
-      //   actions.push(newAction);
-      // }
-      // TEMP: First time animation trigger (ABOUT Section)
-      //triggerAnim(1);
     }
 
     // RENDERER
@@ -261,11 +242,6 @@ var three = (function(){
     renderer.gammaInput = true;
     renderer.gammaOutput = true;
 
-    // STATS
-    if ( debug ) {
-      stats = new Stats();
-      container.appendChild( stats.dom );
-    }
     // EVENTS
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
     window.addEventListener( 'resize', onWindowResize, false );
@@ -274,28 +250,6 @@ var three = (function(){
     }, 1000 / 30 );
   };
 
-  trigger_anim = function (index, delay) {
-    var i = index -1;
-    if (verbose) console.log("Animation index: " + i);
-    if (currentAction)
-    {
-      if (verbose) console.log(currentAction._clip.name);
-      actions[i].reset();
-      actions[i].weight = 1;
-      currentAction.crossFadeTo(actions[i], 1);
-      if (verbose) console.log("Has current action");
-    }
-    else
-    {
-      //mixer.stopAllAction();
-      //actions[i].play();
-      actions[i].weight = 1;
-      actions[i].reset();
-      actions[i].startAt(mixer.time + delay).play();
-      if (verbose) console.log("First action");
-    }
-    currentAction = actions[i];
-  };
   // EVENT HANDLERS
   function onWindowResize( event )
   {
@@ -383,9 +337,7 @@ var three = (function(){
       zoomCenter.set(worldPos.x, worldPos.y);
       //console.log(zoomCenter);
     }
-    if (typeof mixer != "undefined") mixer.update( clock.getDelta() );
     render();
-    if ( debug ) stats.update();
   }
   function render()
   {
