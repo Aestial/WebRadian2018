@@ -25,6 +25,7 @@ $(function() {
             // Clear the form.
             $('#name').val('');
             $('#email').val('');
+            $('#opt-1, #opt-2, #opt-3, #opt-4, #opt-5, #opt-6').prop('checked', false);
             // $('#message').val('');
         }).fail(function(data) {
             // Make sure that the formMessages div has the 'error' class.
