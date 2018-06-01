@@ -58,7 +58,7 @@ $(document).ready(function() {
     gotoPage(0);
   });
 
-  $('.intro--options').click(function() {
+  $('.intro--options, .radian--title').click(function() {
     gotoPage(2);
     popup.toggle();
   });

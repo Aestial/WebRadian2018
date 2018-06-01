@@ -15,7 +15,7 @@
 .about-background {
   background-image: url("../img/about-visual.png");
 }
-.radian-title, .side-nav, .header {
+.radian--title, .side-nav, .header {
   letter-spacing: 2px;
 }
 .header-svg {
