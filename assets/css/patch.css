@@ -15,13 +15,17 @@
 .about-background {
   background-image: url("../img/about-visual.png");
 }
-.radian-title, .side-nav, .header {
+.radian--title, .side-nav, .header {
   letter-spacing: 2px;
 }
 .header-svg {
   position: absolute;
   height: 90%;
   top: 10%;
+}
+.notification-svg {
+  position: absolute;
+  height: 70px;
 }
 .header-cont {
   -webkit-padding-start: 36px;
