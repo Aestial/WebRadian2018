@@ -49,6 +49,7 @@
   <script src="assets/js/three.js"></script>
   <script src="assets/js/popup.js"></script>
   <script src="assets/js/vimeo.js"></script>
+  <script src="assets/js/contact.js"></script>
   <script src="assets/js/main.js"></script>
 
   <script data-src="assets/shaders/ortho/vertex.js" data-name="ortho" type="x-shader/x-vertex"></script>
@@ -76,14 +77,11 @@
       <p class="header-latin">RADIAN</p>
       <p class="header-kata">ラジアン</p>
     </ul>
-    <!-- <img src="assets/img/logo.png" alt="RADIAN">
-    <p>RADIAN</p> -->
   </a>
     <p class="device-notification--message">RADIAN tiene mucho que ofrecer. Orienta tu dispositivo verticalmente o busca una pantalla más grande. ¡No te decepcionarás!</p>
   </div>
   <div id="popup">
     <div id="popup-close" onclick="popup.toggle()">
-      <!-- <img src="assets/img/close.png" alt="close"> -->
     </div>
     <div id='vimeo' data-vimeo-id="211593215" data-vimeo-width="384" data-vimeo-color="ff6665" data-vimeo-portrait="false" data-vimeo-byline="false"></div>
   </div>
@@ -233,7 +231,6 @@
                   <div class="modal">
                     <div class="modal--information">
                       <p>AV DE LA REPÚBLICA 127 INT. 5 <br> COL. TABACALERA, DEL. CUAUHTÉMOC <br> CDMX C.P. 06030</p>
-                      <!-- <a href="mailto:ouremail@gmail.com">ouremail@gmail.com</a> -->
                       <a href="tel:+525554571091">Cel: +52 (55) 5457-1091<br></a>
                     </div>
                     <ul class="modal--options">
@@ -249,8 +246,9 @@
               <div id="threecontainer"></div>
               <div class="hire">
                 <h2>¿Cuál es tu área de interés?</h2>
+                <div id="form-messages"></div>
                 <!-- checkout formspree.io for easy form setup -->
-                <form class="work-request">
+                <form id="ajax-contact" class="work-request" method="post" action="assets/php/mailer.php">
                   <div class="work-request--options">
                     <span class="options-a">
                     <input id="opt-1" type="checkbox" value="app design">
