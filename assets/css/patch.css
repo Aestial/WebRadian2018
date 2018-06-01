@@ -23,6 +23,10 @@
   height: 90%;
   top: 10%;
 }
+.notification-svg {
+  position: absolute;
+  height: 70px;
+}
 .header-cont {
   -webkit-padding-start: 36px;
 }
