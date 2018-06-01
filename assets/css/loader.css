@@ -36,13 +36,14 @@ body.modal-open {
 }
 @media (max-width: 800px) {
   #logoCont {
-    position: absolute;
     width: 50px;
     height: 50px;
-    padding: 5px;
-    top: 43%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  }
+}
+@media (max-height: 700px) {
+  #logoCont {
+    width: 60px;
+    height: 60px;
   }
 }
 #loadBarCont {
