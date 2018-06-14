@@ -17,7 +17,7 @@
         if ( empty($name) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Set a 400 (bad request) response code and exit.
             http_response_code(400);
-            echo "Oops! There was a problem with your submission. Please complete the form and try again.";
+            echo "Hubo un problema con el envío de tu mensaje, llena la forma e intenta de nuevo.";
             exit;
         }
         // Set the recipient email address.
@@ -26,7 +26,7 @@
         $subject = "Contacto de $name. Web RADIAN";
         // Build the email content.
         $email_content = "Nombre: $name\n\n";
-        $email_content .= "Email: $email\n\n";
+        $email_content .= "E-mail: $email\n\n";
         if ( !empty($interests) ) {
             $email_content .= "Intereses: \n$interests";
         }
@@ -37,15 +37,15 @@
         if (mail($recipient, $subject, $email_content, $email_headers)) {
             // Set a 200 (okay) response code.
             http_response_code(200);
-            echo "Thank You! Your message has been sent.";
+            echo "¡Gracias! Tu mensaje ha sido enviado.";
         } else {
             // Set a 500 (internal server error) response code.
             http_response_code(500);
-            echo "Oops! Something went wrong and we couldn't send your message.";
+            echo "¡Nooo! Algo salió mal y no pudimos enviar tu mensaje.";
         }
     } else {
         // Not a POST request, set a 403 (forbidden) response code.
         http_response_code(403);
-        echo "There was a problem with your submission, please try again.";
+        echo "Hubo un problema con el envío de tu mensaje, por favor intenta de nuevo.";
     }
 ?>
