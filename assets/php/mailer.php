@@ -5,6 +5,8 @@
         $name = strip_tags(trim($_POST["name"]));
 	      $name = str_replace(array("\r","\n"),array(" "," "),$name);
         $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+        $interest = $_POST["opt-1"] || $_POST["opt-2"] || $_POST["opt-3"];
+        $games = $_POST["opt-1"];
         // $message = trim($_POST["message"]);
         // Check that data was sent to the mailer.
         // if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -15,14 +17,15 @@
             exit;
         }
         // Set the recipient email address.
-        // FIXME: Update this to your desired email address.
-        $recipient = "hola@radian.mx, heber@radian.mx, jaime@radian.mx";
+        // $recipient = "hola@radian.mx, heber@radian.mx, jaime@radian.mx";
+        $recipient = "jaime@radian.mx";
          // Set the email subject.
         $subject = "Contacto de $name. Web RADIAN";
         // Build the email content.
         $email_content = "Nombre: $name\n";
         $email_content .= "Email: $email\n\n";
-        // $email_content .= "Mensaje:\n$message\n";
+        $email_content .= "Intereses: \n$interest\n";
+        $email_content .= "Games: \n$games\n";
         // Build the email headers.
         $email_headers = "From: $name <$email>";
 
