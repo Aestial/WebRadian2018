@@ -7,15 +7,13 @@
         $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
 
         $options = array("opt-1", "opt-2", "opt-3", "opt-4", "opt-5", "opt-6");
-        $interests '';
-        foreach ($options as $option) {
+        $interests = "";
+        foreach ($options as &$option) {
             if ( $_POST[$option]) {
-              $interests .= $_POST[$option];
+              $interests .= "+ " . $_POST[$option] . "\n";
             }
         }
-        // $message = trim($_POST["message"]);
         // Check that data was sent to the mailer.
-        // if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         if ( empty($name) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Set a 400 (bad request) response code and exit.
             http_response_code(400);
@@ -23,14 +21,15 @@
             exit;
         }
         // Set the recipient email address.
-        // $recipient = "hola@radian.mx, heber@radian.mx, jaime@radian.mx";
-        $recipient = "jaime@radian.mx";
+        $recipient = "hola@radian.mx, heber@radian.mx, jaime@radian.mx";
          // Set the email subject.
         $subject = "Contacto de $name. Web RADIAN";
         // Build the email content.
-        $email_content = "Nombre: $name\n";
+        $email_content = "Nombre: $name\n\n";
         $email_content .= "Email: $email\n\n";
-        $email_content .= "Intereses: \n$interests\n";
+        if ( !empty($interests) ) {
+            $email_content .= "Intereses: \n$interests";
+        }
         // Build the email headers.
         $email_headers = "From: $name <$email>";
 
