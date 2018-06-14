@@ -5,8 +5,14 @@
         $name = strip_tags(trim($_POST["name"]));
 	      $name = str_replace(array("\r","\n"),array(" "," "),$name);
         $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-        $interest = $_POST["opt-1"] || $_POST["opt-2"] || $_POST["opt-3"];
-        $games = $_POST["opt-1"];
+
+        $options = array("opt-1", "opt-2", "opt-3", "opt-4", "opt-5", "opt-6");
+        $interests '';
+        foreach ($options as $option) {
+            if ( $_POST[$option]) {
+              $interests .= $_POST[$option];
+            }
+        }
         // $message = trim($_POST["message"]);
         // Check that data was sent to the mailer.
         // if ( empty($name) OR empty($message) OR !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -24,8 +30,7 @@
         // Build the email content.
         $email_content = "Nombre: $name\n";
         $email_content .= "Email: $email\n\n";
-        $email_content .= "Intereses: \n$interest\n";
-        $email_content .= "Games: \n$games\n";
+        $email_content .= "Intereses: \n$interests\n";
         // Build the email headers.
         $email_headers = "From: $name <$email>";
 
